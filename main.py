@@ -1,3 +1,4 @@
+#VERSION 2.0
 import requests
 from bs4 import BeautifulSoup
 import random
@@ -336,7 +337,7 @@ class VentanaPrincipal(MakeConnection,Juego):
             #get_Song()
             if self.opcion.get() == 0:
                 self.message['text'] = '   Selecciona una dificultad'
-            else:    
+            else:
                 self.make_window_game()
 
     def make_window_game(self):
