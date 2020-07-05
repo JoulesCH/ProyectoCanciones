@@ -281,7 +281,7 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.panel.grid(row=0,column=0)
 
         self.frame = Frame(self.wind)
-        self.frame.place(x = 312,y = 358)
+        self.frame.place(x = 0,y = 0)
         self.frame.config(bg="medium turquoise")
         self.frame.config(bd=25)
 
@@ -290,10 +290,10 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.message.config(bg="medium turquoise",   # Background
              font=("arial",13 + constante))
 
-        self.etiqueta = Label(self.frame,text= 'Nombre del artista')
-        self.etiqueta.grid(row=1,column=0,sticky=W)
+        self.etiqueta = Label(self.wind,text= 'Nombre del artista')
+        self.etiqueta.place(x = 490, y = 421)
         self.etiqueta.config(fg="white",    # Foreground
-             bg="medium turquoise",   # Background
+             bg="magenta",   # Background
              font=("Bangers",23 + constante))
 
         self.artistaE = Entry(self.wind)
