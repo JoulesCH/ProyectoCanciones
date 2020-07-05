@@ -293,7 +293,7 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.etiqueta = Label(self.wind,text= 'Nombre del artista')
         self.etiqueta.place(x = 490, y = 421)
         self.etiqueta.config(fg="white",    # Foreground
-             bg="magenta",   # Background
+             bg="VioletRed2",   # Background
              font=("Bangers",23 + constante))
 
         self.artistaE = Entry(self.wind)
