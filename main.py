@@ -91,24 +91,24 @@ class Juego:
         self.message = Label(self.wind,text='000')#puntaje
         self.message.config(fg="white",    # Foreground
              bg=self.color_fondo,   # Background
-             font=("Bangers",24+ constante))
+             font=("Bangers",28+ constante))
         self.message.place(x = 825, y = 8)
 
         self.messageArtista = Label(self.wind,text=self.artistaEscogido)
-        self.messageArtista.config(fg="medium turquoise",    # Foreground
-             bg="white",   # Background
-             font=("Bangers",20+ constante))
-        self.messageArtista.place(x = 50, y = 95)
+        self.messageArtista.config(fg="SeaGreen3",    # Foreground
+             bg="black",   # Background
+             font=("Bangers",25+ constante))
+        self.messageArtista.place(x = 20, y = 80)
 
         self.messageVerso=Label(self.wind,text='',fg='red')
         self.messageVerso.config(fg="white",bg="medium turquoise", font=("Bangers",45+ constante))
         #self.messageVerso.place(x=200, y=200)
-        self.messageVerso.place(relx=0.5, rely=0.38, anchor=CENTER)
+        self.messageVerso.place(relx=0.5, rely=0.41, anchor=CENTER)
 
         self.messageCorrect=Label(self.wind,text='')
-        self.messageCorrect.config(fg='white',bg=self.color_fondo, font=("Bangers",24+ constante)) #cadeblue3
+        self.messageCorrect.config(fg='white',bg='black', font=("Bangers",20+ constante)) #cadeblue3
         #self.messageVerso.place(x=200, y=200)
-        self.messageCorrect.place(relx=0.5, rely=0.585, anchor=CENTER) # rely = 0.1
+        self.messageCorrect.place(relx=0.5, rely=0.590, anchor=CENTER) # rely = 0.1
 
         self.img2 = ImageTk.PhotoImage(Image.open("heart.png"))
         self.panel2 = Label(self.wind, image = self.img2,bg= self.color_fondo)
