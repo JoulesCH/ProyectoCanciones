@@ -281,9 +281,9 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.panel.grid(row=0,column=0)
 
         self.frame = Frame(self.wind)
-        self.frame.place(x = 0,y = 0)
-        self.frame.config(bg="medium turquoise")
-        self.frame.config(bd=25)
+        #self.frame.place(x = 0,y = 0)
+        #self.frame.config(bg="medium turquoise")
+        #self.frame.config(bd=25)
 
         self.message=Label(self.frame,text='',fg='red')
         self.message.grid(row=0,column=0,columnspan=2,sticky= W + E)
@@ -304,8 +304,8 @@ class VentanaPrincipal(MakeConnection,Juego):
 
         self.opcion = IntVar()
 
-        Radiobutton(self.frame, text="Fácil", variable=self.opcion, value=5, bg="medium turquoise").grid(row=3,column=0,sticky= E) #fg="white"
-        Radiobutton(self.frame, text="Difícil", variable=self.opcion, value=8, bg="medium turquoise").grid(row=3,column=1,sticky= W)#fg="white"
+        Radiobutton(self.wind, text="", variable=self.opcion, value=5, bg="black").place(x = 379, y = 344) #fg="white"
+        Radiobutton(self.wind, text="", variable=self.opcion, value=8, bg="black").place(x = 577, y = 344)#fg="white"
 
         self.message2=Label(self.frame,text='',fg='red')
         self.message2.grid(row=2,column=0,columnspan=2,sticky= W + E)
@@ -318,7 +318,7 @@ class VentanaPrincipal(MakeConnection,Juego):
              font=("Bangers",0+ constante))
 
         Button (self.wind, text='        INICIAR       ',command= lambda: self.iniciar(), bg="black",fg="white").place(x = 441, y = 330)
-        Button (self.wind, text='Salir',command= lambda: quit(), bg="medium turquoise").place(x = 500, y = 500)
+        Button (self.wind, text='   SALIR    ',command= lambda: quit(), bg="black",fg="white").place(x = 20, y = 30)
 
     def iniciar(self):
         #print('Opcion escogida: ',self.opcion.get())
