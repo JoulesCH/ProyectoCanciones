@@ -86,7 +86,7 @@ class Juego:
 
         self.nombreUsuario = Entry(self.wind)
         self.nombreUsuario.focus()
-        self.nombreUsuario.place(x=427,y=365)
+        self.nombreUsuario.place(x=427,y=368)
 
         self.message = Label(self.wind,text='000')#puntaje
         self.message.config(fg="white",    # Foreground
@@ -103,7 +103,7 @@ class Juego:
         self.messageVerso=Label(self.wind,text='',fg='red')
         self.messageVerso.config(fg="white",bg="medium turquoise", font=("Bangers",45+ constante))
         #self.messageVerso.place(x=200, y=200)
-        self.messageVerso.place(relx=0.5, rely=0.41, anchor=CENTER)
+        self.messageVerso.place(relx=0.5, rely=0.398, anchor=CENTER)
 
         self.messageCorrect=Label(self.wind,text='')
         self.messageCorrect.config(fg='white',bg='black', font=("Bangers",20+ constante)) #cadeblue3
@@ -125,9 +125,9 @@ class Juego:
         self.get_Song()
         self.get_Verso()
 
-        Button (self.wind, text=' ¡VAMOS! ',command= lambda: self.verificar(), bg="medium turquoise").place(x=617,y=363)
-        Button (self.wind, text=' OTRO VERSO ',command= lambda: self.quitar_Puntos(), bg="medium turquoise").place(x=710,y=363)
-        Button (self.wind, text=' MENÚ ',command= lambda: [destroy_Window(self.wind),crear_Inicio()], bg="medium turquoise").place(x=900,y=27)
+        Button (self.wind, text=' ¡VAMOS! ',command= lambda: self.verificar(), bg=self.color_fondo).place(x=617,y=363)
+        Button (self.wind, text=' OTRO VERSO ',command= lambda: self.quitar_Puntos(), bg=self.color_fondo).place(x=710,y=363)
+        Button (self.wind, text=' MENÚ ',command= lambda: [destroy_Window(self.wind),crear_Inicio()], bg=self.color_fondo).place(x=900,y=27)
 
     def get_Song(self):
         self.puntuacionProx = 10
