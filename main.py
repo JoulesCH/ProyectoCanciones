@@ -317,8 +317,8 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.message3.config(bg="medium turquoise",   # Background
              font=("Bangers",0+ constante))
 
-        Button (self.frame, text='Iniciar',command= lambda: self.iniciar(), bg="medium turquoise").grid(row=5,column=0,sticky = W +E)
-        Button (self.frame, text='Salir',command= lambda: quit(), bg="medium turquoise").grid(row=5,column=1,sticky = W +E )
+        Button (self.wind, text='        INICIAR       ',command= lambda: self.iniciar(), bg="black",fg="white").place(x = 441, y = 330)
+        Button (self.wind, text='Salir',command= lambda: quit(), bg="medium turquoise").place(x = 500, y = 500)
 
     def iniciar(self):
         #print('Opcion escogida: ',self.opcion.get())
