@@ -64,7 +64,7 @@ class MakeConnection:
 class Juego:
     def __init__(self,window,dificultad,names,link,artist):
         self.wind = window
-        self.wind.title('¿Qué tan fanático eres?')
+        self.wind.title('GUESS THE SONG')
         self.dificultad = dificultad
         self.felicitaciones = ['✅ ¡Muy bien! ','✅ ¡Eres muy bueno!','✅ ¡Sí que eres fan!','✅ ¡Te sabes todas!','✅ ¡Maravilloso!', '✅ ¡Si que sabes!']
 
@@ -90,9 +90,9 @@ class Juego:
 
         self.message = Label(self.wind,text='000')#puntaje
         self.message.config(fg="white",    # Foreground
-             bg=self.color_fondo,   # Background
+             bg='black',   # Background
              font=("Bangers",28+ constante))
-        self.message.place(x = 825, y = 8)
+        self.message.place(x = 825, y = 2)
 
         self.messageArtista = Label(self.wind,text=self.artistaEscogido)
         self.messageArtista.config(fg="SeaGreen3",    # Foreground
@@ -109,6 +109,17 @@ class Juego:
         self.messageCorrect.config(fg='white',bg='black', font=("Bangers",20+ constante)) #cadeblue3
         #self.messageVerso.place(x=200, y=200)
         self.messageCorrect.place(relx=0.5, rely=0.590, anchor=CENTER) # rely = 0.1
+
+        self.puntajel=Label(self.wind,text='Puntaje:')
+        self.puntajel.config(fg='white',bg='black', font=("Bangers",24+ constante)) #cadeblue3
+        #self.messageVerso.place(x=200, y=200)
+        self.puntajel.place(x=735,y=10) # rely = 0.1
+
+        self.vidasl=Label(self.wind,text='Vidas:')
+        self.vidasl.config(fg='white',bg='black', font=("Bangers",24+ constante)) #cadeblue3
+        #self.messageVerso.place(x=200, y=200)
+        self.vidasl.place(x=735,y=70) # rely = 0.1
+
 
         self.img2 = ImageTk.PhotoImage(Image.open("heart.png"))
         self.panel2 = Label(self.wind, image = self.img2,bg= self.color_fondo)
@@ -127,7 +138,7 @@ class Juego:
 
         Button (self.wind, text=' ¡VAMOS! ',command= lambda: self.verificar(), bg=self.color_fondo).place(x=617,y=363)
         Button (self.wind, text=' OTRO VERSO ',command= lambda: self.quitar_Puntos(), bg=self.color_fondo).place(x=710,y=363)
-        Button (self.wind, text=' MENÚ ',command= lambda: [destroy_Window(self.wind),crear_Inicio()], bg=self.color_fondo).place(x=900,y=27)
+        Button (self.wind, text=' MENÚ ',command= lambda: [destroy_Window(self.wind),crear_Inicio()], bg=self.color_fondo).place(x=900,y=20)
 
     def get_Song(self):
         self.puntuacionProx = 10
@@ -211,6 +222,7 @@ class Juego:
 
             print('****¡Muy bien, acertaste!****')
             self.puntos = self.puntos + self.puntuacionProx
+            self.messageCorrect.config(fg=self.color_fondo)
             self.message['text'] = '0' + str(self.puntos)
             self.get_Song()
             self.get_Verso()
@@ -220,6 +232,7 @@ class Juego:
 
         else:
             self.vidas -= 1
+            self.messageCorrect.config(fg='red')
             self.messageCorrect['text'] = ' 🚫 Nombre: ' + self.namesj[self.num][:self.posicion+1] #error
 
 
@@ -254,12 +267,12 @@ class Juego:
 
     def game_Over(self):
         self.messageCorrect2=Label(self.wind,text='❌ GAME OVER ❌')
-        self.messageCorrect2.config(fg='red',bg='CadetBlue3', font=("Bangers",34 + constante)) #cadeblue3
+        self.messageCorrect2.config(fg='red',bg='black', font=("Bangers",34 + constante)) #cadeblue3
         #self.messageVerso.place(x=200, y=200)
-        self.messageCorrect2.place(relx=0.5, rely=0.1, anchor=CENTER) # rely = 0.1
-        Button (self.wind, text=' JUGAR DE NUEVO ',command= lambda: [destroy_Window(self.wind),self.nuevo_Juego()], bg="medium turquoise").place(relx=0.5, rely=0.18, anchor=CENTER)
-        Button (self.wind, text=' ¡VAMOS! ', bg="medium turquoise").place(x=617,y=363)
-        Button (self.wind, text=' OTRO VERSO ', bg="medium turquoise").place(x=710,y=363)
+        self.messageCorrect2.place(relx=0.5, rely=0.15, anchor=CENTER) # rely = 0.1
+        Button (self.wind, text=' JUGAR DE NUEVO ',command= lambda: [destroy_Window(self.wind),self.nuevo_Juego()], bg=self.color_fondo).place(relx=0.5, rely=0.23, anchor=CENTER)
+        Button (self.wind, text=' ¡VAMOS! ', bg=self.color_fondo).place(x=617,y=363)
+        Button (self.wind, text=' OTRO VERSO ', bg=self.color_fondo).place(x=710,y=363)
 
     def nuevo_Juego(self):
         crear_Inicio()
@@ -272,7 +285,7 @@ class Juego:
 class VentanaPrincipal(MakeConnection,Juego):
     def __init__(self,window):
         self.wind = window
-        self.wind.title('¿Qué tan fanático eres?')
+        self.wind.title('GUESS THE SONG')
 
         self.logotipo = LabelFrame(self.wind)
         self.logotipo.grid(row=0,column=0,pady=10)
