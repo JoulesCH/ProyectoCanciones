@@ -291,7 +291,7 @@ class VentanaPrincipal(MakeConnection,Juego):
              font=("arial",13 + constante))
 
         self.etiqueta = Label(self.wind,text= 'Nombre del artista')
-        self.etiqueta.place(x = 490, y = 421)
+        self.etiqueta.place(x = 330, y = 253)######################################################
         self.etiqueta.config(fg="white",    # Foreground
              bg="VioletRed2",   # Background
              font=("Bangers",23 + constante))
@@ -299,7 +299,7 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.artistaE = Entry(self.wind)
         self.artistaE.focus()
         #self.artistaE.grid(row=1,column=1,sticky= W+E)
-        self.artistaE.place(x=520,y=421)
+        self.artistaE.place(x=535,y=270) ################################################33
         self.artistaE.config(bg="white")
 
         self.opcion = IntVar()
