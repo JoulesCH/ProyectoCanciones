@@ -285,9 +285,9 @@ class VentanaPrincipal(MakeConnection,Juego):
         #self.frame.config(bg="medium turquoise")
         #self.frame.config(bd=25)
 
-        self.message=Label(self.frame,text='',fg='red')
-        self.message.grid(row=0,column=0,columnspan=2,sticky= W + E)
-        self.message.config(bg="medium turquoise",   # Background
+        self.message=Label(self.wind,text='',fg='white')
+        self.message.place(relx=0.5, rely=0.69, anchor=CENTER)
+        self.message.config(bg="VioletRed2",   # Background
              font=("arial",13 + constante))
 
         self.etiqueta = Label(self.wind,text= 'Nombre del artista')
