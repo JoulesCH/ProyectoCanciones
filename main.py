@@ -182,17 +182,18 @@ class Juego:
         print(self.versos[self.num2])
         print('Nombre: ')
         print(self.namesj[self.num][:self.posicion+1])
+        self.versos[self.num2] = "  " + self.versos[self.num2] + "  "
 
         if len(self.versos[self.num2]) <= 42:
-            self.messageVerso.config(fg="medium turquoise",bg="white", font=("Bangers",45+ constante)) #verdana
+            self.messageVerso.config(fg="black",bg="white", font=("Bangers",45+ constante)) #verdana
             self.messageVerso['text'] = self.versos[self.num2]
         #59
         elif len(self.versos[self.num2]) <= 59:
-            self.messageVerso.config(fg="medium turquoise",bg="white", font=("Bangers",34+ constante))#verdana
+            self.messageVerso.config(fg="black",bg="white", font=("Bangers",34+ constante))#verdana
             self.messageVerso['text'] = self.versos[self.num2]
 
         else:
-            self.messageVerso.config(fg="medium turquoise",bg="white", font=("Bangers",29+ constante))#verdana
+            self.messageVerso.config(fg="black",bg="white", font=("Bangers",29+ constante))#verdana
             self.messageVerso['text'] = self.versos[self.num2]
 
     def verificar(self):
