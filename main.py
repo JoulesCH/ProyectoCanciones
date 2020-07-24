@@ -1,5 +1,3 @@
-#VERSION 2.0
-
 import requests
 from bs4 import BeautifulSoup
 import random
@@ -65,7 +63,7 @@ class Juego:
     def __init__(self,window,dificultad,names,link,artist):
         self.wind = window
         self.wind.title('¿Qué tan fanático eres?')
-        self.dificultad = dificultad
+
         self.felicitaciones = ['✅ ¡Muy bien! ','✅ ¡Eres muy bueno!','✅ ¡Sí que eres fan!','✅ ¡Te sabes todas!','✅ ¡Maravilloso!', '✅ ¡Si que sabes!']
 
         self.numerito = 0
@@ -184,15 +182,15 @@ class Juego:
         print(self.namesj[self.num][:self.posicion+1])
 
         if len(self.versos[self.num2]) <= 42:
-            self.messageVerso.config(fg="medium turquoise",bg="white", font=("Bangers",45+ constante)) #verdana
+            self.messageVerso.config(fg="white",bg="medium turquoise", font=("Bangers",45+ constante)) #verdana
             self.messageVerso['text'] = self.versos[self.num2]
         #59
         elif len(self.versos[self.num2]) <= 59:
-            self.messageVerso.config(fg="medium turquoise",bg="white", font=("Bangers",34+ constante))#verdana
+            self.messageVerso.config(fg="white",bg="medium turquoise", font=("Bangers",34+ constante))#verdana
             self.messageVerso['text'] = self.versos[self.num2]
 
         else:
-            self.messageVerso.config(fg="medium turquoise",bg="white", font=("Bangers",29+ constante))#verdana
+            self.messageVerso.config(fg="white",bg="medium turquoise", font=("Bangers",29+ constante))#verdana
             self.messageVerso['text'] = self.versos[self.num2]
 
     def verificar(self):
@@ -256,15 +254,12 @@ class Juego:
         self.messageCorrect2.config(fg='red',bg='CadetBlue3', font=("Bangers",34 + constante)) #cadeblue3
         #self.messageVerso.place(x=200, y=200)
         self.messageCorrect2.place(relx=0.5, rely=0.1, anchor=CENTER) # rely = 0.1
-        Button (self.wind, text=' JUGAR DE NUEVO ',command= lambda: [destroy_Window(self.wind),self.nuevo_Juego()], bg="medium turquoise").place(relx=0.5, rely=0.18, anchor=CENTER)
-        Button (self.wind, text=' ¡VAMOS! ', bg="medium turquoise").place(x=617,y=363)
-        Button (self.wind, text=' OTRO VERSO ', bg="medium turquoise").place(x=710,y=363)
+        Button (self.wind, text=' JUGAR DE NUEVO ',command= lambda: [self.nuevo_Juego(),destroy_Window(self.wind)], bg="medium turquoise").place(relx=0.5, rely=0.18, anchor=CENTER)
 
     def nuevo_Juego(self):
-        crear_Inicio()
-
+        pass
     def quitar_Puntos(self):
-        if self.puntuacionProx > self.dificultad:#DIFICULTAD FACIL 5 oportunidades, DIFICIL 2 oportunidades
+        if self.puntuacionProx > 5:#DIFICULTAD FACIL 5 oportunidades, DIFICIL 2 oportunidades
             self.puntuacionProx -= 1
             self.get_Verso()
 
@@ -288,7 +283,7 @@ class VentanaPrincipal(MakeConnection,Juego):
         self.message=Label(self.frame,text='',fg='red')
         self.message.grid(row=0,column=0,columnspan=2,sticky= W + E)
         self.message.config(bg="medium turquoise",   # Background
-             font=("arial",13 + constante))
+             font=("Bangers",9 + constante))
 
         self.etiqueta = Label(self.frame,text= 'Nombre del artista')
         self.etiqueta.grid(row=1,column=0,sticky=W)
@@ -304,8 +299,8 @@ class VentanaPrincipal(MakeConnection,Juego):
 
         self.opcion = IntVar()
 
-        Radiobutton(self.frame, text="Fácil", variable=self.opcion, value=5, bg="medium turquoise").grid(row=3,column=0,sticky= E) #fg="white"
-        Radiobutton(self.frame, text="Difícil", variable=self.opcion, value=8, bg="medium turquoise").grid(row=3,column=1,sticky= W)#fg="white"
+        Radiobutton(self.frame, text="Fácil", variable=self.opcion, value=1, bg="medium turquoise",fg="white").grid(row=3,column=0,sticky= E)
+        Radiobutton(self.frame, text="Difícil", variable=self.opcion, value=3, bg="medium turquoise",fg="white").grid(row=3,column=1,sticky= W)
 
         self.message2=Label(self.frame,text='',fg='red')
         self.message2.grid(row=2,column=0,columnspan=2,sticky= W + E)
@@ -321,8 +316,6 @@ class VentanaPrincipal(MakeConnection,Juego):
         Button (self.frame, text='Salir',command= lambda: quit(), bg="medium turquoise").grid(row=5,column=1,sticky = W +E )
 
     def iniciar(self):
-        #print('Opcion escogida: ',self.opcion.get())
-
         self.message['text'] = ''
         self.artista = self.artistaE.get()
         self.artista = self.artista.lower()
@@ -330,16 +323,13 @@ class VentanaPrincipal(MakeConnection,Juego):
         MakeConnection.__init__(self,self.artista)
 
         if len(self.names) == 0:
-            self.message['text'] = '   Artista no encontrado, intenta con otro'
+            self.message['text'] = 'Artista no encontrado, intenta con otro'
         else:
             #print(self.link[0:5])
             #print(self.names[0:5])
             #print(self.opcion.get())
             #get_Song()
-            if self.opcion.get() == 0:
-                self.message['text'] = '   Selecciona una dificultad'
-            else:
-                self.make_window_game()
+            self.make_window_game()
 
     def make_window_game(self):
         self.wind.destroy()
@@ -348,6 +338,5 @@ class VentanaPrincipal(MakeConnection,Juego):
         Juego.__init__(self,self.window,self.opcion.get(),self.names,self.link,self.artista)
         self.window.resizable(False, False)
         self.window.mainloop()
-
 
 crear_Inicio()
